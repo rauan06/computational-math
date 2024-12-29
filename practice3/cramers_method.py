@@ -1,5 +1,6 @@
 import numpy as np
 from typing import Union
+from utils import read_matrix
 
 def cramers_method(A: list[list[int]], b: list[int]) -> Union[list[float], str]:
     A = np.array(A)
@@ -16,12 +17,6 @@ def cramers_method(A: list[list[int]], b: list[int]) -> Union[list[float], str]:
     return result
 
 if __name__ == '__main__':
-    n = int(input().strip())
-    A, b = [], []
-
-    for i in range(n):
-        equation = list(map(int, input().strip().split()))
-        A.append(equation[:len(equation) - 1])
-        b.append(equation[-1])
+    A, b = read_matrix()
 
     print(cramers_method(A, b))
